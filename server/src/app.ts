@@ -8,10 +8,17 @@ dotenv.config({
     path: '.env'
 });
 
+// enable cross origin requests
+const cors = require('cors');
+
 // initialise express server
 const app = express();
+
 // initialise express router
 const router = MainRouter;
+
+// use cors
+app.use(cors());
 
 // use router
 app.use('/api', router);
