@@ -1,38 +1,86 @@
-.App {
+.app {
+  min-height: 100vh;
+  background-color: #0a192f;
   text-align: center;
+  padding: 2vw 5vw;
 }
 
-.App-logo {
-  height: 40vmin;
+.app-title {
+  color: #ccd6f6;
+  font-size: calc(32px + 2vmin);
+  line-height: 1;
+}
+
+.app-logo {
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
+  .app-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.app-header {
+  padding: 3vw 0;
 }
 
-.App-link {
+.app-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes app-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+}
+
+.spotify-icon-box {
+  line-height: inherit;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.spotify-icon {
+  max-width: calc(35px + 2vmin);
+  vertical-align: middle;
+}
+
+.artist-search {
+  margin-bottom: 5vh;
+  min-height: 8vh;
+  background-color: transparent;
+  color: #ccd6f6;
+  border: 1px solid #64ffda;
+  border-right: none;
+  border-bottom-left-radius: 1vh;
+  border-top-left-radius: 1vh;
+  width: 100%;
+  padding: 2vh;
+  font-size: 1.5rem;
+}
+
+.artist-search:focus-visible {
+  outline: none;
+  /*border: 2px solid #64ffda;*/
+}
+
+.search-button {
+  min-height: 8vh;
+  font-size: 1.5rem;
+  background-color: transparent;
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  border-top-right-radius: 1vh;
+  border-bottom-right-radius: 1vh;
+  border-left: none;
+  padding: 2vh;
+  cursor: pointer;
+}
+
+.artist-search:focus-visible ~ .search-button {
+  border: 2px solid #64ffda;
 }

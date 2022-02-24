@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css';
+import React from "react";
+import {Row, Col} from 'antd';
+import {SearchOutlined} from '@ant-design/icons';
+import Header from "./components/Header";
+import CardContainer from "./components/ArtistContainer";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header/>
+      <Row>
+          <Col flex="auto">
+              <input className="artist-search" placeholder="Search Artists"/>
+          </Col>
+          <Col flex="none">
+              <button className="search-button" type="submit"><SearchOutlined /></button>
+          </Col>
+      </Row>
+      <CardContainer/>
     </div>
   );
 }
