@@ -3,7 +3,7 @@ import React from "react";
 
 
 function Header() {
-    const appName = "Find Artist"
+    const appName = "Find your favourite artists"
     return (
         <Row className="app-header">
             <Col flex="none" className="spotify-icon-box">
