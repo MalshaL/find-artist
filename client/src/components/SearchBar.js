@@ -36,7 +36,7 @@ export default class SearchBar extends React.Component {
 
 
 function getSearchResult(searchTerm) {
-    axios.get('http://localhost:5000/api/tracks')
+    axios.get('http://localhost:5000/api/access-token')
         .then(response => {
             console.log(response);
         })

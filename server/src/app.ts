@@ -1,12 +1,9 @@
-import dotenv from 'dotenv';
 import express from 'express';
 import MainRouter from './MainRouter';
 
 
-// load the environment variables from .env file
-dotenv.config({
-    path: '.env'
-});
+// read port config variable
+const config = require('./config');
 
 // enable cross origin requests
 const cors = require('cors');
@@ -24,6 +21,4 @@ app.use(cors());
 app.use('/api', router);
 
 // make server listen on port
-((port = process.env.APP_PORT || 5000) => {
-    app.listen(port, () => console.log(`> Listening on port ${port}`));
-})();
+((port = config.port) => app.listen(port, () => console.log(`> Listening on port ${port}`)))();
