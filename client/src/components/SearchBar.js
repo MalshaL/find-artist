@@ -15,7 +15,7 @@ export default class SearchBar extends React.Component {
             console.log(this.searchTerm);
             const searchResult = getSearchResult(this.searchTerm);
             console.log('state before--'+this.state);
-            this.setState({searchResult});
+            this.setState({searchResult: searchResult});
             console.log('state--'+this.state);
         }
     }
