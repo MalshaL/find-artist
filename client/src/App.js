@@ -3,6 +3,7 @@ import 'antd/dist/antd.css';
 import React from "react";
 import Header from "./components/Header";
 import HomePage from "./components/HomePage";
+import LoadingScreen from "./components/LoadingScreen";
 
 
 export default class App extends React.Component {
@@ -12,7 +13,7 @@ export default class App extends React.Component {
         return (
             <div className="app">
                 <Header/>
-                <HomePage/>
+                {this.state.accessToken ? <HomePage/> : <LoadingScreen/>}
             </div>
         )
     }

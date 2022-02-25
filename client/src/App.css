@@ -17,16 +17,8 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .app-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: app-logo-spin infinite 20s linear;
   }
-}
-
-.app-header {
-  padding: 3vw 0;
-}
-
-.app-link {
-  color: #61dafb;
 }
 
 @keyframes app-logo-spin {
@@ -36,6 +28,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.app-header {
+  padding: 3vw 0;
+}
+
+.app-link {
+  color: #61dafb;
 }
 
 .spotify-icon-box {
@@ -83,4 +83,38 @@
 
 .artist-search:focus-visible ~ .search-button {
   border: 2px solid #64ffda;
+}
+
+.loading-box {
+  padding-top: 20vh;
+}
+
+.loading-icon-1 {
+  font-size: 4rem;
+  animation: loading-animation-1 2s infinite;
+}
+
+.loading-icon-2 {
+  font-size: 4rem;
+  animation: loading-animation-2 2s infinite;
+}
+
+.loading-icon-3 {
+  font-size: 4rem;
+  animation: loading-animation-3 2s infinite;
+}
+
+@keyframes loading-animation-1 {
+  0% {color: #0a192f;}
+  30%, 100% {color: #7b8cb7;}
+}
+
+@keyframes loading-animation-2 {
+  0%, 30% {color: #0a192f;}
+  60%, 100% {color: #7b8cb7;}
+}
+
+@keyframes loading-animation-3 {
+  0%, 60% {color: #0a192f;}
+  90%, 100% {color: #7b8cb7;}
 }
