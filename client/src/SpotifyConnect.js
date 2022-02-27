@@ -5,8 +5,8 @@ const ACCESS_TOKEN = "access_token";
 const TOKEN_TIMESTAMP = "token_timestamp";
 // Spotify token expiration time in milliseconds
 const TOKEN_EXPIRATION_TIME = 3600 * 1000;
-// grace time of a minute for token expiration in milliseconds
-const GRACE_TIME = 60 * 1000;
+// grace time of five minutes for token expiration in milliseconds
+const GRACE_TIME = 5 * 60 * 1000;
 
 const setTokenTimestamp = () => window.localStorage.setItem(TOKEN_TIMESTAMP, ""+Date.now());
 
