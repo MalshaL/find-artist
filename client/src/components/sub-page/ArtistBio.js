@@ -10,8 +10,8 @@ export default class ArtistBio extends React.Component {
                     <img className="artist-img"/>
                 </Col>
                 <Col>
-                    <p><bold>Genres: </bold>genres</p>
-                    <p><bold>Followers: </bold>150</p>
+                    <p><b>Genres: </b>genres</p>
+                    <p><b>Followers: </b>150</p>
                 </Col>
             </Row>
         )

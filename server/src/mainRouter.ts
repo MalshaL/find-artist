@@ -12,7 +12,7 @@ class MainRouter {
     }
 
     getAccessToken(config: { clientId: string; clientSecret: string; grantType: string; authApiUrl: string; }) {
-        this.router.get('/access-token', (req, res) => {
+        this.router.get('/getAccessToken', (req, res) => {
             axios({
                 url: config.authApiUrl + 'api/token',
                 method: 'post',
@@ -37,7 +37,7 @@ class MainRouter {
     }
 
     getArtists(config: { apiUrl: string } ) {
-        this.router.get('/artists', (req, res) => {
+        this.router.get('/getArtists', (req, res) => {
             if (req.header('searchTerm') === "") {
                 res.status(200).send([]);
             } else {

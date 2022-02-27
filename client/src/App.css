@@ -157,11 +157,11 @@
   font-weight: 300;
 }
 
+.page-title >h1 > a {
+  color: var(--text-color-1);
+}
+
 .artist-img {
   border-radius: 50%;
   padding: 1vh 1vw;
-}
-
-.artist-bio-heading {
-  font-weight: bold;
 }

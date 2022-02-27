@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 export default class ArtistCard extends React.Component {
 
     render() {
-        const pageLink = "/artist/"+this.props.artist.id;
+        const pageLink = "/artist/"+this.props.artist.name+"?id="+this.props.artist.id;
         return (
             <Link to={pageLink}>
             <div className="artist-card">

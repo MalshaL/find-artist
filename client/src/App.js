@@ -14,7 +14,7 @@ export default class App extends React.Component {
                 <Router>
                     <Routes>
                         <Route path="/" exact element={<HomePage/>}/>
-                        <Route path="/artist/:id" element={<SubPage/>}/>
+                        <Route path="/artist/:name" element={<SubPage/>}/>
                     </Routes>
                 </Router>
             </div>

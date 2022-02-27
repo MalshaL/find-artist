@@ -4,6 +4,7 @@ import React from "react";
 import Header from "./Header";
 import LoadingScreen from "./LoadingScreen";
 import axios from "axios";
+import {token} from "../SpotifyConnect";
 
 
 export default class HomePage extends React.Component {
@@ -23,7 +24,7 @@ export default class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        this.getAccessToken();
+        this.setState({accessToken: token});
     }
 
     handleSearchResponse = (searchResponse) => {
