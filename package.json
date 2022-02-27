@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/MalshaL/find-artist.git"
   },
+  "main": "server/src/app.ts",
   "author": {
     "name": "Malsha Ranawaka"
   },
