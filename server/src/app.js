@@ -28,6 +28,6 @@ app.use('/api', router);
 app.use(express.static(path.resolve(__dirname, '../../client/build')));
 
 // all remaining requests return the React app, so it can handle routing.
-app.get('*', function (request: any, response: { sendFile: (arg0: any) => void; }) {
-    response.sendFile(path.resolve(__dirname, '../../client/public', 'index.html'));
+app.get('*', function (request, response) {
+    response.sendFile(path.resolve(__dirname, '/../../client/public', 'index.html'));
 });

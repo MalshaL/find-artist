@@ -1,9 +1,10 @@
-import dotenv from 'dotenv';
+// this file loads and manages environment variables from config
+const dotenv = require('dotenv');
 
 
 // load the environment variables from .env file
 const result = dotenv.config({
-    path: '.env.local'
+    path: '.env'
 });
 module.exports = {
     nodeDev: process.env.NODE_ENV,
