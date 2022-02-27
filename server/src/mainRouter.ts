@@ -2,8 +2,6 @@ import {Router} from 'express';
 import axios from "axios";
 
 
-const qs = require('querystring');
-
 class MainRouter {
     router = Router();
 
