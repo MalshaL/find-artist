@@ -11,7 +11,7 @@ export default class SubPageHeader extends React.Component {
                     <h1>Artist Name</h1>
                 </Col>
                 <Col flex="none" className="spotify-icon-box">
-                    <img className="spotify-icon" src={require('../images/Spotify_Icon.png')} alt="Spotify Icon"/>
+                    <img className="spotify-icon" src={require('../../images/Spotify_Icon.png')} alt="Spotify Icon"/>
                 </Col>
             </Row>
         )

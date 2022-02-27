@@ -1,13 +1,15 @@
 import '../App.css';
 import React from "react";
 import bgImage from '../images/background.jpg';
+import {Link} from "react-router-dom";
 
 
 export default class ArtistCard extends React.Component {
 
     render() {
-
+        const pageLink = "/artist/"+this.props.artist.id;
         return (
+            <Link to={pageLink}>
             <div className="artist-card">
                 <img className="artist-card-img" src={this.props.artist.images.length ?
                     this.props.artist.images[0].url : bgImage} alt={"Artist"}/>
@@ -16,20 +18,7 @@ export default class ArtistCard extends React.Component {
                     <p className="artist-card-pop">{this.props.artist.popularity ? "Popularity: " + this.props.artist.popularity : ""}</p>
                 </div>
             </div>
-            // <header className="App-header">
-            //     <img src={logo} className="App-logo" alt="logo" />
-            //     <p>
-            //         Edit <code>src/App.js</code> and save to reload.
-            //     </p>
-            //     <a
-            //         className="App-link"
-            //         href="https://reactjs.org"
-            //         target="_blank"
-            //         rel="noopener noreferrer"
-            //     >
-            //         Learn React
-            //     </a>
-            // </header>
+            </Link>
         )
     }
 }
