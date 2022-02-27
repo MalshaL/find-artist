@@ -1,7 +1,7 @@
-import express from 'express';
-import MainRouter from './mainRouter';
-const path = require('path');
+// server side API endpoints which connect to Spotify API
 
+const express = require('express');
+const path = require('path');
 
 // read port config variable
 const config = require('./config');
@@ -13,7 +13,7 @@ const cors = require('cors');
 const app = express();
 
 // initialise express router
-const router = MainRouter;
+const router = require('./mainRouter');
 
 // use cors
 app.use(cors());
@@ -24,9 +24,10 @@ app.use('/api', router);
 // make server listen on port
 ((port = config.port) => app.listen(port, () => console.log(`> Listening on port ${port}`)))();
 
+// use build files from client
 app.use(express.static(path.resolve(__dirname, '../../client/build')));
 
 // all remaining requests return the React app, so it can handle routing.
-app.get('*', function (request, response) {
+app.get('*', function (request: any, response: { sendFile: (arg0: any) => void; }) {
     response.sendFile(path.resolve(__dirname, '../../client/public', 'index.html'));
 });

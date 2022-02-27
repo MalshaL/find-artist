@@ -111,26 +111,26 @@ class MainRouter {
 
     getTrackFeatures(config: { apiUrl: string }) {
         this.router.get('/getTrackFeatures', (req, res) => {
-        axios({
-            url: config.apiUrl + 'audio-features',
-            method: 'get',
-            params: {
-                ids: req.header('ids')
-            },
-            headers: {
-                'Content-type': 'application/json',
-                Authorization: 'Bearer ' + req.header('token')
-            }
-        })
-            .then(response => {
-                console.log(response);
-                res.status(response.status).send(response.data.audio_features);
+            axios({
+                url: config.apiUrl + 'audio-features',
+                method: 'get',
+                params: {
+                    ids: req.header('ids')
+                },
+                headers: {
+                    'Content-type': 'application/json',
+                    Authorization: 'Bearer ' + req.header('token')
+                }
             })
-            .catch(error => {
-                console.log(error);
-                res.status(error.status).send({error: error});
-            });
-    })
+                .then(response => {
+                    console.log(response);
+                    res.status(response.status).send(response.data.audio_features);
+                })
+                .catch(error => {
+                    console.log(error);
+                    res.status(error.status).send({error: error});
+                });
+        })
     }
 
     private _configure() {
@@ -143,7 +143,6 @@ class MainRouter {
         this.getArtistTracks(config);
         this.getTrackFeatures(config);
     }
-
 
 }
 
