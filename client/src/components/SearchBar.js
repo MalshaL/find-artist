@@ -5,19 +5,30 @@ import axios from "axios";
 
 
 export default class SearchBar extends React.Component {
+
     searchTerm = "";
-    state = { searchResult: []};
+
+    getSearchResult = (searchTerm) => {
+        axios.get('http://localhost:5000/api/artists', {
+            headers: {
+                token: this.props.token,
+                searchTerm: searchTerm
+            }
+        })
+            .then(response => {
+                console.log(response);
+                this.props.resultCallback(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
 
     handleInputChange = (event) => {
         let value = event.target.value.trim();
-        if (value !== "") {
-            this.searchTerm = value;
-            console.log(this.searchTerm);
-            const searchResult = getSearchResult(this.searchTerm);
-            console.log('state before--'+this.state);
-            this.setState({searchResult: searchResult});
-            console.log('state--'+this.state);
-        }
+        console.log(value);
+        this.searchTerm = value;
+        this.getSearchResult(this.searchTerm);
     }
 
     render() {
@@ -32,15 +43,4 @@ export default class SearchBar extends React.Component {
         </Row>
         )
     }
-}
-
-
-function getSearchResult(searchTerm) {
-    axios.get('http://localhost:5000/api/access-token')
-        .then(response => {
-            console.log(response);
-        })
-        .catch(error => {
-            console.log(error);
-        });
 }

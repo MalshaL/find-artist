@@ -11,10 +11,10 @@ class MainRouter {
         this._configure();
     }
 
-    getAccessToken(config: { clientId: string; clientSecret: string; grantType: string; apiUrl: string; }) {
+    getAccessToken(config: { clientId: string; clientSecret: string; grantType: string; authApiUrl: string; }) {
         this.router.get('/access-token', (req, res) => {
             axios({
-                url: config.apiUrl + 'api/token',
+                url: config.authApiUrl + 'api/token',
                 method: 'post',
                 params: {
                     grant_type: 'client_credentials'
@@ -27,13 +27,42 @@ class MainRouter {
             })
                 .then(response => {
                     console.log(response);
-                    res.status(200).send(response.data);
+                    res.status(response.status).send(response.data);
                 })
                 .catch(error => {
                     console.log(error);
-                    res.status(400).send({error: error});
+                    res.status(error.status).send({error: error});
                 });
         })
+    }
+
+    getArtists(config: { apiUrl: string } ) {
+        this.router.get('/artists', (req, res) => {
+            if (req.header('searchTerm') === "") {
+                res.status(200).send([]);
+            } else {
+            axios({
+                url: config.apiUrl + 'search',
+                method: 'get',
+                params: {
+                    type: 'artist',
+                    q: req.header('searchTerm'),
+                    limit: 12
+                },
+                headers: {
+                    'Content-type':'application/json',
+                    Authorization: 'Bearer '+ req.header('token')
+                }
+            })
+                .then(response => {
+                    console.log(response);
+                    res.status(response.status).send(response.data.artists.items);
+                })
+                .catch(error => {
+                    console.log(error);
+                    res.status(error.status).send({error: error});
+                });
+        }})
     }
 
     private _configure() {
@@ -41,10 +70,8 @@ class MainRouter {
         const config = require('./config');
 
         this.getAccessToken(config);
+        this.getArtists(config);
 
-        this.router.get('/tracks', (req, res) => {
-            res.send(['a1', 'a2', 'a3'])
-        })
     }
 
 

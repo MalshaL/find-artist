@@ -1,15 +1,22 @@
-import logo from "../logo.svg";
 import '../App.css';
 import React from "react";
 import {Card} from 'antd';
+import bgImage from '../images/background.jpg';
 
 
-function ArtistCard() {
-    const {Meta} = Card;
-    return (
-        <Card hoverable cover={<img src={logo} alt={logo}/>}>
-            <Meta title="artist name" description="desc"/>
-        </Card>
+export default class ArtistCard extends React.Component {
+
+    render() {
+
+        return (
+            <div className="artist-card">
+                <img className="artist-card-img" src={this.props.artist.images.length ?
+                    this.props.artist.images[0].url : bgImage} alt={"Artist"}/>
+                <div className="artist-card-desc">
+                    <h4 className="artist-card-name">{this.props.artist.name}</h4>
+                    <p className="artist-card-pop">{this.props.artist.popularity ? "Popularity: "+this.props.artist.popularity : ""}</p>
+                </div>
+            </div>
             // <header className="App-header">
             //     <img src={logo} className="App-logo" alt="logo" />
             //     <p>
@@ -25,6 +32,5 @@ function ArtistCard() {
             //     </a>
             // </header>
         )
+    }
 }
-
-export default ArtistCard;

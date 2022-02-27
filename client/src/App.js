@@ -33,7 +33,7 @@ export default class App extends React.Component {
             <div className="app">
                 <Header/>
                 {this.state.accessToken ?
-                    <HomePage/> :
+                    <HomePage token={this.state.accessToken}/> :
                     <LoadingScreen/>
                 }
             </div>
