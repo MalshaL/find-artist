@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 
 // load the environment variables from .env file
 const result = dotenv.config({
-    path: '.env'
+    path: '.env.local'
 });
 module.exports = {
     nodeDev: process.env.NODE_ENV,
