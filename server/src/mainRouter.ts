@@ -66,6 +66,27 @@ class MainRouter {
         })
     }
 
+    getArtist(config: { apiUrl: string }) {
+        this.router.get('/getArtist', (req, res) => {
+            axios({
+                url: config.apiUrl + 'artists/' + req.header('id'),
+                method: 'get',
+                headers: {
+                    'Content-type': 'application/json',
+                    Authorization: 'Bearer ' + req.header('token')
+                }
+            })
+                .then(response => {
+                    console.log(response);
+                    res.status(response.status).send(response.data);
+                })
+                .catch(error => {
+                    console.log(error);
+                    res.status(error.status).send({error: error});
+                });
+        })
+    }
+
     getArtistTracks(config: { apiUrl: string }) {
         this.router.get('/getArtistTracks', (req, res) => {
             axios({
@@ -120,6 +141,7 @@ class MainRouter {
 
         this.getAccessToken(config);
         this.getArtists(config);
+        this.getArtist(config);
         this.getArtistTracks(config);
         this.getTrackFeatures(config);
     }

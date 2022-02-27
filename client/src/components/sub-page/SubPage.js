@@ -17,6 +17,24 @@ class SubPage extends React.Component {
         console.log(this.props);
     }
 
+    // get artist data
+    getArtist(id, storedToken) {
+        axios.get('http://localhost:5000/api/getArtist', {
+            headers: {
+                token: storedToken,
+                id: id
+            }
+        })
+            .then(response => {
+                console.log(response);
+                this.setState({artist: response.data});
+                this.getArtistTracks(id, storedToken);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
     // get top tracks for selected artist
     getArtistTracks(id, storedToken) {
         axios.get('http://localhost:5000/api/getArtistTracks', {
@@ -35,6 +53,7 @@ class SubPage extends React.Component {
             });
     }
 
+    // get audio features for the top tracks
     getTrackFeatures(tracks, storedToken) {
         let idString = "";
         let i = 0;
@@ -65,6 +84,7 @@ class SubPage extends React.Component {
             });
     }
 
+    // combine lists for tracks and audio features
     mergeTrackLists(tracks, trackFeatures) {
         return tracks.map(track => {
             let trackFeature = trackFeatures.find(t => t.id === track.id)
@@ -74,11 +94,12 @@ class SubPage extends React.Component {
 
     componentDidMount() {
         const name = this.props.match.params.name;
-        const id = new URLSearchParams(this.props.location.search).get("id");
+        const query = new URLSearchParams(this.props.location.search);
+        const id = query.get("id");
         console.log(name);
         console.log(id);
         this.setState({id: id, name: name});
-        this.getArtistTracks(id, this.state.storedToken);
+        this.getArtist(id, this.state.storedToken);
     }
 
     render() {
@@ -87,13 +108,13 @@ class SubPage extends React.Component {
                 <SubPageHeader name={this.state.name}/>
                 {this.state.tracks ?
                     <>
-                    <ArtistBio data={this.state.tracks}/>
+                    <ArtistBio artist={this.state.artist}/>
                     <Row>
                         <Col>
-                            <TrackList data={this.state.tracks}/>
+                            <TrackList tracks={this.state.tracks}/>
                         </Col>
                         <Col>
-                            <TrackGraph data={this.state.tracks}/>
+                            <TrackGraph tracks={this.state.tracks}/>
                         </Col>
                     </Row> </>:
                     <LoadingScreen/>}
