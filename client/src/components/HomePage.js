@@ -6,7 +6,7 @@ import React from "react";
 export default class HomePage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { searchResult: []};
+        this.state = {searchResult: []};
     }
 
     handleSearchResponse = (searchResponse) => {
@@ -16,9 +16,9 @@ export default class HomePage extends React.Component {
     render() {
         return (
             <div>
-                <SearchBar token = {this.props.token} resultCallback = {this.handleSearchResponse}/>
+                <SearchBar token={this.props.token} resultCallback={this.handleSearchResponse}/>
                 {this.state.searchResult.length ?
-                    <ArtistContainer searchResult = {this.state.searchResult}/> :
+                    <ArtistContainer searchResult={this.state.searchResult}/> :
                     <div/>
                 }
             </div>

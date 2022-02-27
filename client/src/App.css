@@ -1,10 +1,10 @@
 :root {
-  --main-color: #0a192f;
+  --main-color: #061121;
   --text-color-1: #ccd6f6;
   --text-color-2: #8893AF;
-  --accent-color: #ccd6f6; /*64ffda*/
+  --accent-color: #ccd6f6;
   --loading-color: #7b8cb7;
-  --artist-card-bg: #0f213a;
+  --artist-card-bg: #0a192f;
   --artist-card-hover: #1c334f;
 }
 
@@ -20,6 +20,7 @@
   color: var(--text-color-1);
   font-size: calc(32px + 2vmin);
   line-height: 1;
+  font-weight: 300;
 }
 
 .app-header {
@@ -119,6 +120,7 @@
 
 .artist-card:hover {
   background-color: var(--artist-card-hover);
+  cursor: pointer;
 }
 
 .artist-card-img {
@@ -144,4 +146,22 @@
 .artist-card-pop {
   margin-bottom: 0;
   color: var(--text-color-2);
+}
+
+/* Sub page styles */
+.page-title > h1 {
+  text-align: left;
+  color: var(--text-color-1);
+  font-size: calc(28px + 2vmin);
+  line-height: 1;
+  font-weight: 300;
+}
+
+.artist-img {
+  border-radius: 50%;
+  padding: 1vh 1vw;
+}
+
+.artist-bio-heading {
+  font-weight: bold;
 }

@@ -32,15 +32,15 @@ export default class SearchBar extends React.Component {
     }
 
     render() {
-    return (
-        <Row>
-            <Col flex="auto">
-                <input className="artist-search" placeholder="Search Artists" onChange={this.handleInputChange}/>
-            </Col>
-            <Col flex="none">
-                <button className="search-button" type="submit"><SearchOutlined /></button>
-            </Col>
-        </Row>
+        return (
+            <Row>
+                <Col flex="auto">
+                    <input className="artist-search" placeholder="Search Artists" onChange={this.handleInputChange}/>
+                </Col>
+                <Col flex="none">
+                    <button className="search-button" type="submit"><SearchOutlined/></button>
+                </Col>
+            </Row>
         )
     }
 }
