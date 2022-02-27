@@ -7,13 +7,13 @@ import TrackGraph from "./TrackGraph";
 import {token} from "../../SpotifyConnect";
 import axios from "axios";
 import LoadingScreen from "../LoadingScreen";
-import { withRouter } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 
 class SubPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {storedToken: token, tracksResult: null, name: "", id: ""};
+        this.state = {storedToken: token, tracksResult: [], trackFeatures: [], tracks: []};
         console.log(this.props);
     }
 
@@ -28,10 +28,48 @@ class SubPage extends React.Component {
             .then(response => {
                 console.log(response);
                 this.setState({tracksResult: response.data});
+                this.getTrackFeatures(response.data, storedToken);
             })
             .catch(error => {
                 console.log(error);
             });
+    }
+
+    getTrackFeatures(tracks, storedToken) {
+        let idString = "";
+        let i = 0;
+        tracks.forEach(track => {
+            if (i===0) {
+                idString = track.id;
+            } else {
+                idString = idString + "," + track.id;
+            }
+            i = i+1;
+        })
+
+        axios.get('http://localhost:5000/api/getTrackFeatures', {
+            headers: {
+                token: storedToken,
+                ids: idString
+            }
+        })
+            .then(response => {
+                console.log(response);
+                this.setState({trackFeatures: response.data});
+                let trackData = this.mergeTrackLists(tracks, response.data)
+                this.setState({tracks: trackData});
+                console.log(trackData);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    mergeTrackLists(tracks, trackFeatures) {
+        return tracks.map(track => {
+            let trackFeature = trackFeatures.find(t => t.id === track.id)
+            return {...track, ...trackFeature}
+        });
     }
 
     componentDidMount() {
@@ -47,15 +85,15 @@ class SubPage extends React.Component {
         return (
             <div>
                 <SubPageHeader name={this.state.name}/>
-                {this.state.tracksResult ?
+                {this.state.tracks ?
                     <>
-                    <ArtistBio data={this.state.tracksResult}/>
+                    <ArtistBio data={this.state.tracks}/>
                     <Row>
                         <Col>
-                            <TrackList data={this.state.tracksResult}/>
+                            <TrackList data={this.state.tracks}/>
                         </Col>
                         <Col>
-                            <TrackGraph data={this.state.tracksResult}/>
+                            <TrackGraph data={this.state.tracks}/>
                         </Col>
                     </Row> </>:
                     <LoadingScreen/>}
