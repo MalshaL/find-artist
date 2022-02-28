@@ -14,7 +14,7 @@ export default class HomePage extends React.Component {
     }
 
     getAccessToken = () => {
-        axios.get('http://localhost:5000/api/access-token')
+        axios.get('/api/access-token')
             .then(response => {
                 this.setState({accessToken: response.data.access_token});
             })

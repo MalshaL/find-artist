@@ -9,7 +9,7 @@ export default class SearchBar extends React.Component {
     searchTerm = "";
 
     getSearchResult = (searchTerm) => {
-        axios.get('http://localhost:5000/api/getArtists', {
+        axios.get('/api/getArtists', {
             headers: {
                 token: this.props.token,
                 searchTerm: searchTerm

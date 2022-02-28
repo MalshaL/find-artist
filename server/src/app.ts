@@ -10,7 +10,7 @@ const cors = require('cors');
 const app = express();
 
 // read environmental variables from config file
-const envFilePath = path.resolve(__dirname, '../.env');
+const envFilePath = path.resolve(__dirname, '../.env.local');
 console.log(envFilePath);
 const dotenv = require('dotenv').config({path: envFilePath});
 const config = require('app-config');
@@ -38,5 +38,6 @@ app.get('*', function (response) {
 });
 
 // make server listen on port
-const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 app.listen(PORT, () => console.log(`> Listening on port ${PORT}`));

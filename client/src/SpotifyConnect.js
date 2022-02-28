@@ -21,7 +21,7 @@ const getStoredAccessToken = () => window.localStorage.getItem(ACCESS_TOKEN);
 
 // set new access token from spotify API
 const setNewAccessToken = () => {
-    axios.get('http://localhost:5000/api/getAccessToken')
+    axios.get('/api/getAccessToken')
         .then(response => {
             setStoredAccessToken(response.data.access_token);
         })

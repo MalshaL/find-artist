@@ -19,7 +19,7 @@ class SubPage extends React.Component {
 
     // get artist data
     getArtist(id, storedToken) {
-        axios.get('http://localhost:5000/api/getArtist', {
+        axios.get('/api/getArtist', {
             headers: {
                 token: storedToken,
                 id: id
@@ -37,7 +37,7 @@ class SubPage extends React.Component {
 
     // get top tracks for selected artist
     getArtistTracks(id, storedToken) {
-        axios.get('http://localhost:5000/api/getArtistTracks', {
+        axios.get('/api/getArtistTracks', {
             headers: {
                 token: storedToken,
                 id: id
@@ -66,7 +66,7 @@ class SubPage extends React.Component {
             i = i+1;
         })
 
-        axios.get('http://localhost:5000/api/getTrackFeatures', {
+        axios.get('/api/getTrackFeatures', {
             headers: {
                 token: storedToken,
                 ids: idString
