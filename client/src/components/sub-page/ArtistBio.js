@@ -19,9 +19,8 @@ export default class ArtistBio extends React.Component {
                                 <></>
                             }
                             <p><b>Followers: </b>{this.props.artist.followers.total}</p>
-                            <a className="artist-link" href={this.props.artist.external_urls.spotify}>
-                                <img className="spotify-icon-btn" src={require('../../images/Spotify_Icon.png')} alt="Spotify Icon"/>
-                                View on Spotify</a>
+                            <a className="artist-link" href={this.props.artist.external_urls.spotify}
+                               target='_blank' rel="noreferrer">VIEW ON SPOTIFY</a>
                         </Col>
                     </Row> : <></>}
             </>

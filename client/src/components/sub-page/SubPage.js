@@ -116,14 +116,14 @@ class SubPage extends React.Component {
                 {this.state.tracks ?
                     <>
                     <ArtistBio artist={this.state.artist}/>
-                    <Row className="trackDiv" gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 8, sm: 16, md: 24, lg: 32}]}>
+                    <Row className="track-div" gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 8, sm: 16, md: 24, lg: 32}]}>
                         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                             <TrackList tracks={this.state.tracks} getSelectedTrack={this.setSelectedTrack}/>
                         </Col>
                         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                             {this.state.selectedTrack ?
                                 <TrackGraph tracks={this.state.tracks} selectedTrack={this.state.selectedTrack}/>
-                                : <div>
+                                : <div className="user-prompt">
                                     Select a track to view audio features.
                                 </div>
                             }
