@@ -31,7 +31,7 @@ const setNewAccessToken = () => {
 }
 
 // get stored access token or set new token
-const getAccessToken = () => {
+export const getAccessToken = () => {
     let currentToken = getStoredAccessToken();
 
     // if no token is set in local storage

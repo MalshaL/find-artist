@@ -2,7 +2,7 @@ import {Col, Row} from "antd";
 import {SearchOutlined} from "@ant-design/icons";
 import React from "react";
 import axios from "axios";
-import {token} from "../SpotifyConnect";
+import {getAccessToken} from "../SpotifyConnect";
 
 
 export default class SearchBar extends React.Component {
@@ -10,6 +10,7 @@ export default class SearchBar extends React.Component {
     searchTerm = "";
 
     getSearchResult = (searchTerm) => {
+        let token = getAccessToken();
         axios.get('/api/getArtists', {
             headers: {
                 token: token,

@@ -4,7 +4,7 @@ import SubPageHeader from "./SubPageHeader";
 import ArtistBio from "./ArtistBio";
 import TrackList from "./TrackList";
 import TrackGraph from "./TrackGraph";
-import {token} from "../../SpotifyConnect";
+import {getAccessToken} from "../../SpotifyConnect";
 import axios from "axios";
 import LoadingScreen from "../LoadingScreen";
 import {withRouter} from "react-router-dom";
@@ -13,22 +13,23 @@ import {withRouter} from "react-router-dom";
 class SubPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {storedToken: token, tracksResult: [], trackFeatures: [], tracks: [], selectedTrack: ""};
+        this.state = {tracksResult: [], trackFeatures: [], tracks: [], selectedTrack: ""};
         console.log(this.props);
     }
 
     // get artist data
-    getArtist(id, storedToken) {
+    getArtist(id) {
+        let token = getAccessToken();
         axios.get('/api/getArtist', {
             headers: {
-                token: storedToken,
+                token: token,
                 id: id
             }
         })
             .then(response => {
                 console.log(response);
                 this.setState({artist: response.data});
-                this.getArtistTracks(id, storedToken);
+                this.getArtistTracks(id);
             })
             .catch(error => {
                 console.log(error);
@@ -36,17 +37,18 @@ class SubPage extends React.Component {
     }
 
     // get top tracks for selected artist
-    getArtistTracks(id, storedToken) {
+    getArtistTracks(id) {
+        let token = getAccessToken();
         axios.get('/api/getArtistTracks', {
             headers: {
-                token: storedToken,
+                token: token,
                 id: id
             }
         })
             .then(response => {
                 console.log(response);
                 this.setState({tracksResult: response.data});
-                this.getTrackFeatures(response.data, storedToken);
+                this.getTrackFeatures(response.data);
             })
             .catch(error => {
                 console.log(error);
@@ -54,7 +56,7 @@ class SubPage extends React.Component {
     }
 
     // get audio features for the top tracks
-    getTrackFeatures(tracks, storedToken) {
+    getTrackFeatures(tracks) {
         let idString = "";
         let i = 0;
         tracks.forEach(track => {
@@ -66,9 +68,10 @@ class SubPage extends React.Component {
             i = i+1;
         })
 
+        let token = getAccessToken();
         axios.get('/api/getTrackFeatures', {
             headers: {
-                token: storedToken,
+                token: token,
                 ids: idString
             }
         })
@@ -99,7 +102,7 @@ class SubPage extends React.Component {
         console.log(name);
         console.log(id);
         this.setState({id: id, name: name});
-        this.getArtist(id, this.state.storedToken);
+        this.getArtist(id);
     }
 
     setSelectedTrack = (id) => {
