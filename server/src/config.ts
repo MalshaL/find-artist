@@ -1,6 +1,7 @@
 // this file loads and manages environment variables from config
-const dotenv = require('dotenv');
 
+
+const dotenv = require('dotenv');
 
 // load the environment variables from .env file
 const result = dotenv.config({

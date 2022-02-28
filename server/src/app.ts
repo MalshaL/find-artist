@@ -3,9 +3,6 @@
 const express = require('express');
 const path = require('path');
 
-// read port config variable
-const config = require('./config');
-
 // enable cross origin requests
 const cors = require('cors');
 
@@ -13,7 +10,7 @@ const cors = require('cors');
 const app = express();
 
 // initialise express router
-const router = require('./mainRouter');
+const router = require('router-module');
 
 // use cors
 app.use(cors());

@@ -7,7 +7,7 @@ export default class Track extends React.Component {
         return(
             <Row>
                 <Col>
-                    <img className="track-art"/>
+                    <img className="track-art" alt="track-art"/>
                 </Col>
                 <Col>
                     <p>Track name</p>

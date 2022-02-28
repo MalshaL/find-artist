@@ -1,15 +1,15 @@
-import {Router} from 'express';
-import axios from "axios";
+const {Router} = require('express');
+const axios = require("axios");
 
 
 class MainRouter {
     router = Router();
 
     constructor() {
-        this._configure();
+        this.configure();
     }
 
-    getAccessToken(config: { clientId: string; clientSecret: string; grantType: string; authApiUrl: string; }) {
+    getAccessToken(config) {
         this.router.get('/getAccessToken', (req, res) => {
             axios({
                 url: config.authApiUrl + 'api/token',
@@ -34,7 +34,7 @@ class MainRouter {
         })
     }
 
-    getArtists(config: { apiUrl: string }) {
+    getArtists(config) {
         this.router.get('/getArtists', (req, res) => {
             if (req.header('searchTerm') === "") {
                 res.status(200).send([]);
@@ -64,7 +64,7 @@ class MainRouter {
         })
     }
 
-    getArtist(config: { apiUrl: string }) {
+    getArtist(config) {
         this.router.get('/getArtist', (req, res) => {
             axios({
                 url: config.apiUrl + 'artists/' + req.header('id'),
@@ -85,7 +85,7 @@ class MainRouter {
         })
     }
 
-    getArtistTracks(config: { apiUrl: string }) {
+    getArtistTracks(config) {
         this.router.get('/getArtistTracks', (req, res) => {
             axios({
                 url: config.apiUrl + 'artists/' + req.header('id') + '/top-tracks',
@@ -109,7 +109,7 @@ class MainRouter {
         })
     }
 
-    getTrackFeatures(config: { apiUrl: string }) {
+    getTrackFeatures(config) {
         this.router.get('/getTrackFeatures', (req, res) => {
             axios({
                 url: config.apiUrl + 'audio-features',
@@ -133,9 +133,9 @@ class MainRouter {
         })
     }
 
-    private _configure() {
+    configure() {
         // read config variables
-        const config = require('./config');
+        const config = require('app-config');
 
         this.getAccessToken(config);
         this.getArtists(config);
@@ -146,4 +146,4 @@ class MainRouter {
 
 }
 
-export = new MainRouter().router;
+module.exports = new MainRouter().router;
