@@ -21,13 +21,18 @@ app.use(cors());
 // use router
 app.use('/api', router);
 
-// make server listen on port
-((port = config.port) => app.listen(port, () => console.log(`> Listening on port ${port}`)))();
-
 // use build files from client
 app.use(express.static(path.resolve(__dirname, '../../client/build')));
 
-// all remaining requests return the React app, so it can handle routing.
+app.get('/', function (req, res) {
+    res.render(path.resolve(__dirname, '../../client/build/index.html'));
+});
+
+// all remaining requests return the React app
 app.get('*', function (response) {
     response.sendFile(path.resolve(__dirname, '/../../client/public', 'index.html'));
 });
+
+// make server listen on port
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`> Listening on port ${PORT}`));
