@@ -10,9 +10,12 @@ class MainRouter {
     }
 
     getAccessToken(config) {
+        console.log(process.env.PORT);
+        console.log(config.clientSecret);
+        console.log("===================================================");
         this.router.get('/getAccessToken', (req, res) => {
             axios({
-                url: config.authApiUrl + 'api/token',
+                url: 'https://accounts.spotify.com/' + 'api/token',
                 method: 'post',
                 params: {
                     grant_type: 'client_credentials'

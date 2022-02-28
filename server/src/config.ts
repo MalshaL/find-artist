@@ -1,15 +1,12 @@
 // this file loads and manages environment variables from config
 
-
-const dotenv = require('dotenv');
-
 // load the environment variables from .env file
-const result = dotenv.config({
-    path: '.env.local'
-});
+// dotenv.config(
+//     {path: '.env.local'}
+// );
 module.exports = {
     nodeDev: process.env.NODE_ENV,
-    port: process.env.APP_PORT,
+    port: process.env.PORT,
     authApiUrl: process.env.AUTH_API_URL,
     apiUrl: process.env.API_URL,
     clientId: process.env.CLIENT_ID,
