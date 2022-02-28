@@ -10,6 +10,9 @@
   "author": {
     "name": "Malsha Ranawaka"
   },
+  "engines": {
+    "node": "15.11.0"
+  },
   "homepage": "https://github.com/MalshaL/find-artist",
   "scripts": {
     "client": "cd client & npm install",
