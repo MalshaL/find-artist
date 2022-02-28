@@ -14,7 +14,6 @@ class SubPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {tracksResult: [], trackFeatures: [], tracks: [], selectedTrack: ""};
-        console.log(this.props);
     }
 
     // get artist data
@@ -27,7 +26,6 @@ class SubPage extends React.Component {
             }
         })
             .then(response => {
-                console.log(response);
                 this.setState({artist: response.data});
                 this.getArtistTracks(id);
             })
@@ -46,7 +44,6 @@ class SubPage extends React.Component {
             }
         })
             .then(response => {
-                console.log(response);
                 this.setState({tracksResult: response.data});
                 this.getTrackFeatures(response.data);
             })
@@ -76,11 +73,9 @@ class SubPage extends React.Component {
             }
         })
             .then(response => {
-                console.log(response);
                 this.setState({trackFeatures: response.data});
                 let trackData = this.mergeTrackLists(tracks, response.data)
                 this.setState({tracks: trackData});
-                console.log(trackData);
             })
             .catch(error => {
                 console.log(error);
@@ -99,8 +94,6 @@ class SubPage extends React.Component {
         const name = this.props.match.params.name;
         const query = new URLSearchParams(this.props.location.search);
         const id = query.get("id");
-        console.log(name);
-        console.log(id);
         this.setState({id: id, name: name});
         this.getArtist(id);
     }

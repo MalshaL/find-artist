@@ -18,7 +18,6 @@ export default class SearchBar extends React.Component {
             }
         })
             .then(response => {
-                console.log(response);
                 this.props.resultCallback(response.data);
             })
             .catch(error => {
@@ -28,7 +27,6 @@ export default class SearchBar extends React.Component {
 
     handleInputChange = (event) => {
         let value = event.target.value.trim();
-        console.log(value);
         this.searchTerm = value;
         this.getSearchResult(this.searchTerm);
     }

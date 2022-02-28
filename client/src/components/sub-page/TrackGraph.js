@@ -65,7 +65,6 @@ export default class TrackGraph extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.selectedTrack !== this.props.selectedTrack) {
-            console.log('something prop has changed.');
             this.setGraphData();
         }
     }

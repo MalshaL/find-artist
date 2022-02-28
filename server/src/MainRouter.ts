@@ -10,9 +10,6 @@ class MainRouter {
     }
 
     getAccessToken(config) {
-        console.log(process.env.PORT);
-        console.log(config.clientSecret);
-        console.log("===================================================");
         this.router.get('/getAccessToken', (req, res) => {
             axios({
                 url: 'https://accounts.spotify.com/' + 'api/token',
@@ -27,7 +24,6 @@ class MainRouter {
                 }
             })
                 .then(response => {
-                    console.log(response);
                     res.status(response.status).send(response.data);
                 })
                 .catch(error => {
@@ -56,7 +52,6 @@ class MainRouter {
                     }
                 })
                     .then(response => {
-                        console.log(response);
                         res.status(response.status).send(response.data.artists.items);
                     })
                     .catch(error => {
@@ -78,7 +73,6 @@ class MainRouter {
                 }
             })
                 .then(response => {
-                    console.log(response);
                     res.status(response.status).send(response.data);
                 })
                 .catch(error => {
@@ -102,7 +96,6 @@ class MainRouter {
                 }
             })
                 .then(response => {
-                    console.log(response);
                     res.status(response.status).send(response.data.tracks);
                 })
                 .catch(error => {
@@ -126,7 +119,6 @@ class MainRouter {
                 }
             })
                 .then(response => {
-                    console.log(response);
                     res.status(response.status).send(response.data.audio_features);
                 })
                 .catch(error => {

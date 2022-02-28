@@ -6,7 +6,6 @@ import bgImage from "../../images/background.jpg";
 export default class Track extends React.Component {
 
     onTrackSelect(id) {
-        console.log(id);
         this.props.getSelectedTrack(id);
     }
 

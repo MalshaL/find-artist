@@ -11,10 +11,8 @@ const app = express();
 
 // read environmental variables from config file
 const envFilePath = path.resolve(__dirname, '../.env.local');
-console.log(envFilePath);
 const dotenv = require('dotenv').config({path: envFilePath});
 const config = require('app-config');
-console.log(config);
 
 // initialise express router
 const router = require('router-module');
