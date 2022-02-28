@@ -13,7 +13,7 @@ import {withRouter} from "react-router-dom";
 class SubPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {storedToken: token, tracksResult: [], trackFeatures: [], tracks: []};
+        this.state = {storedToken: token, tracksResult: [], trackFeatures: [], tracks: [], selectedTrack: ""};
         console.log(this.props);
     }
 
@@ -102,6 +102,10 @@ class SubPage extends React.Component {
         this.getArtist(id, this.state.storedToken);
     }
 
+    setSelectedTrack = (id) => {
+        this.setState({selectedTrack: id});
+    }
+
     render() {
         return (
             <div>
@@ -109,12 +113,18 @@ class SubPage extends React.Component {
                 {this.state.tracks ?
                     <>
                     <ArtistBio artist={this.state.artist}/>
-                    <Row>
-                        <Col>
-                            <TrackList tracks={this.state.tracks}/>
+                    <Row className="trackDiv" gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 8, sm: 16, md: 24, lg: 32}]}>
+                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                            <TrackList tracks={this.state.tracks} getSelectedTrack={this.setSelectedTrack}/>
                         </Col>
-                        <Col>
-                            <TrackGraph tracks={this.state.tracks}/>
+                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                            {this.state.selectedTrack ?
+                                <TrackGraph tracks={this.state.tracks} selectedTrack={this.state.selectedTrack}/>
+                                : <div>
+                                    Select a track to view audio features.
+                                </div>
+                            }
+
                         </Col>
                     </Row> </>:
                     <LoadingScreen/>}

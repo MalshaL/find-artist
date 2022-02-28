@@ -8,14 +8,20 @@ export default class ArtistBio extends React.Component {
         return (
             <>
                 {this.props.artist ?
-                    <Row>
-                        <Col>
+                    <Row gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 8, sm: 16, md: 24, lg: 32}]}>
+                        <Col xs={8} sm={8} md={8} lg={8} xl={8}>
                             <img className="artist-img" src={this.props.artist.images.length ?
                                 this.props.artist.images[0].url : bgImage} alt={"Artist"}/>
                         </Col>
-                        <Col>
-                            <p><b>Genres: </b>genres</p>
-                            <p><b>Followers: </b>150</p>
+                        <Col xs={16} sm={16} md={16} lg={16} xl={16} className="artist-bio">
+                            {this.props.artist.genres.length ?
+                                <p><b>Genre: </b>{this.props.artist.genres[0]}</p> :
+                                <></>
+                            }
+                            <p><b>Followers: </b>{this.props.artist.followers.total}</p>
+                            <a className="artist-link" href={this.props.artist.external_urls.spotify}>
+                                <img className="spotify-icon-btn" src={require('../../images/Spotify_Icon.png')} alt="Spotify Icon"/>
+                                View on Spotify</a>
                         </Col>
                     </Row> : <></>}
             </>

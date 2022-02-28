@@ -37,7 +37,7 @@ export default class HomePage extends React.Component {
                 <Header/>
                 {this.state.accessToken ?
                     <>
-                        <SearchBar token={this.state.accessToken} resultCallback={this.handleSearchResponse}/>
+                        <SearchBar resultCallback={this.handleSearchResponse}/>
                         {this.state.searchResult.length ?
                             <ArtistContainer searchResult={this.state.searchResult}/> :
                             <div/>

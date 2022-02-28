@@ -6,6 +6,7 @@
   --loading-color: #7b8cb7;
   --artist-card-bg: #0a192f;
   --artist-card-hover: #1c334f;
+  --dark-green: #1DB954;
 }
 
 .app {
@@ -164,4 +165,82 @@
 .artist-img {
   border-radius: 50%;
   padding: 1vh 1vw;
+  max-width: 15vw;
+}
+
+.artist-bio {
+  text-align: left;
+  font-size: 1.1rem;
+  color: var(--text-color-1);
+  margin: auto 0;
+}
+
+.artist-link {
+  color: var(--main-color);
+  background-color: var(--dark-green);
+  border-radius: 1vh;
+  padding: 2vh 0.8vw;
+}
+
+.artist-link:hover {
+  text-decoration: none;
+  color: var(--main-color);
+  font-size: 1.2rem;
+}
+
+.spotify-icon-btn {
+  min-width: calc(22px + 2vmin);
+  max-width: calc(22px + 2vmin);
+  vertical-align: middle;
+  margin-right: 1vw;
+  margin-bottom: 0.5vh;
+}
+
+.trackDiv {
+  margin-top: 10vh;
+}
+
+.track-data {
+  color: var(--text-color-1);
+  margin-bottom: 3vh;
+}
+
+.track-data-selected {
+  color: var(--text-color-1);
+  margin-bottom: 3vh;
+  background-color: var(--artist-card-hover);
+}
+
+.track-data:hover {
+  background-color: var(--artist-card-bg);
+  cursor: pointer;
+}
+
+.track-art {
+  text-align: right;
+}
+
+.track-art > img {
+  max-width: 70%;
+}
+
+.track-meta {
+  text-align: left;
+  margin: auto 0;
+}
+
+.track-name {
+  margin-bottom: 0.5rem;
+}
+
+.track-album {
+  margin-bottom: 0;
+}
+
+.track-duration {
+  margin: auto 0;
+}
+
+.track-duration > p {
+  margin-bottom: 0;
 }
