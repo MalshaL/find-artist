@@ -10,16 +10,13 @@
   "author": {
     "name": "Malsha Ranawaka"
   },
-  "engines": {
-    "node": "15.11.0"
-  },
   "homepage": "https://github.com/MalshaL/find-artist",
   "scripts": {
     "client": "cd client & npm install",
     "server": "cd server & npm run dev",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "start": "node server",
-    "heroku-postbuild": "cd client/ && npm install && npm start && npm run build"
+    "heroku-postbuild": "cd client/ && npm install && npm run build"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
