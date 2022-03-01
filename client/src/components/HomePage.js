@@ -4,7 +4,7 @@ import React from "react";
 import Header from "./Header";
 import LoadingScreen from "./LoadingScreen";
 import axios from "axios";
-import {token} from "../SpotifyConnect";
+import {setStoredAccessToken} from "../SpotifyConnect";
 
 
 export default class HomePage extends React.Component {
@@ -14,9 +14,10 @@ export default class HomePage extends React.Component {
     }
 
     getAccessToken = () => {
-        axios.get('/api/access-token')
+        axios.get('/api/getAccessToken')
             .then(response => {
                 this.setState({accessToken: response.data.access_token});
+                setStoredAccessToken(response.data.access_token);
             })
             .catch(error => {
                 console.log(error);
@@ -24,7 +25,7 @@ export default class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({accessToken: token});
+        this.getAccessToken();
     }
 
     handleSearchResponse = (searchResponse) => {

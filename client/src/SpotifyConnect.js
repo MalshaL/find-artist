@@ -10,7 +10,7 @@ const GRACE_TIME = 5 * 60 * 1000;
 
 const setTokenTimestamp = () => window.localStorage.setItem(TOKEN_TIMESTAMP, ""+Date.now());
 
-const setStoredAccessToken = (token) => {
+export const setStoredAccessToken = (token) => {
     setTokenTimestamp();
     window.localStorage.setItem(ACCESS_TOKEN, token);
 }
