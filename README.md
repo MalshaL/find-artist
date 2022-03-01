@@ -24,16 +24,21 @@ This project was created with,
 ## Deploying on Heroku
 
 1. Create new heroku app.
-`heroku create app-name`
+
+```heroku create app-name```
 
 2. Set environment variables for Heroku.
-`heroku config:set AUTH_API_URL='https://accounts.spotify.com/'
+
+```
+heroku config:set AUTH_API_URL='https://accounts.spotify.com/'
 heroku config:set API_URL='https://api.spotify.com/v1/'
 heroku config:set CLIENT_ID=xxxx
-heroku config:set CLIENT_SECRET=xxxx`
+heroku config:set CLIENT_SECRET=xxxx
+```
 
 3. Push changes to heroku.
-`git push heroku main`
+
+```git push heroku main```
 
 4. View the app on `https://app-name.herokuapp.com`.
 
